@@ -1,10 +1,10 @@
 <script lang="ts">
-	import startCase from 'lodash/startCase';
 	import type {
 		FIREFIGHTER_AVAILABILITY_TYPE,
 		FIREFIGHTER_DUTY_TYPE,
 		FIREFIGHTER_TYPE
 	} from '$lib/firefightersQuery';
+	import { LABELS } from '$lib/constants';
 
 	type CONFIG_TYPE =
 		| {
@@ -28,11 +28,11 @@
 
 <div>
 	<h3 class="value" style="border-color: {VALUE_TO_COLOR[config.value]};">
-		{startCase(config.value)}
+		{LABELS[config.value]}
 	</h3>
 
 	<div class="list">
-		{#each config.firefighters.filter((firefighter) => firefighter[config.kind] === 'available') as firefighter}
+		{#each config.firefighters.filter((firefighter) => firefighter[config.kind] === config.value) as firefighter}
 			<span>{firefighter.name}</span>
 		{/each}
 	</div>

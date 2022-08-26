@@ -1,7 +1,7 @@
 <script lang="ts">
-	import startCase from 'lodash/startCase';
 	import type { FIREFIGHTER_TYPE } from '$lib/firefightersQuery';
 	import firefightersStore from '$lib/firefightersStore';
+	import { LABELS } from '$lib/constants';
 
 	export let firefighter: FIREFIGHTER_TYPE;
 </script>
@@ -33,12 +33,12 @@
 			class:dutytype--elac={firefighter.dutyType === 'elac'}
 			class:dutytype--eip={firefighter.dutyType === 'eip'}
 		>
-			{firefighter.dutyType}
+			{LABELS[firefighter.dutyType]}
 		</div>
 	{/if}
 
 	<div class="block status">
-		{firefighter.availability === 'unavailable' ? '' : startCase(firefighter.availability)}
+		{firefighter.availability === 'unavailable' ? '' : LABELS[firefighter.availability]}
 	</div>
 </button>
 

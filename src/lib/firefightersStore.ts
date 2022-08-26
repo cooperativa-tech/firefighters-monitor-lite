@@ -22,9 +22,8 @@ function createFirefighters() {
 	if (typeof window !== 'undefined') {
 		subscribeToQuery({
 			query: firefightersQuery.toString(),
-			variables: { first: 10 },
 			token: import.meta.env.VITE_DATO_READ_TOKEN,
-			includeDrafts: true,
+			includeDrafts: false,
 			onUpdate: ({ response }) => {
 				update((store) => ({ ...store, firefighters: response.data.firefighters }));
 			},
