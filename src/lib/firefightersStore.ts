@@ -14,7 +14,7 @@ interface StoreType {
 }
 
 function createFirefighters() {
-	const { subscribe, set, update } = writable<StoreType>({
+	const { subscribe, update } = writable<StoreType>({
 		firefighters: undefined,
 		loading: false
 	});
@@ -36,12 +36,20 @@ function createFirefighters() {
 		});
 	}
 
-	function updateFirefighter(
+	async function updateFirefighter(
 		firefighterId: string,
 		updateParams: Partial<Omit<FIREFIGHTER_TYPE, 'id'>>
 	) {
+		update((store) => ({ ...store, loading: true }));
+
+		await fetch(`/api/firefighter/${firefighterId}`, {
+			method: 'PATCH',
+			body: JSON.stringify(updateParams)
+		});
+
 		update((store) => ({
 			...store,
+			loading: false,
 			firefighters: store.firefighters?.map((firefighter) => {
 				if (firefighter.id === firefighterId) {
 					return { ...firefighter, ...updateParams } as FIREFIGHTER_TYPE;
@@ -50,10 +58,6 @@ function createFirefighters() {
 				return firefighter;
 			})
 		}));
-	}
-
-	function setLoading(value: boolean) {
-		update((store) => ({ ...store, loading: value }));
 	}
 
 	async function updateAvailability(firefighter: FIREFIGHTER_TYPE) {
@@ -65,16 +69,7 @@ function createFirefighters() {
 
 		const updateParams = { availability: nextAvailability };
 
-		setLoading(true);
-		try {
-			await fetch(`/api/firefighter/${firefighter.id}`, {
-				method: 'PATCH',
-				body: JSON.stringify(updateParams)
-			});
-		} finally {
-			updateFirefighter(firefighter.id, updateParams);
-			setLoading(false);
-		}
+		updateFirefighter(firefighter.id, updateParams);
 	}
 
 	async function updateDutyType(firefighter: FIREFIGHTER_TYPE) {
@@ -86,16 +81,7 @@ function createFirefighters() {
 
 		const updateParams = { dutyType: nextDutyType as FIREFIGHTER_DUTY_TYPE };
 
-		setLoading(true);
-		try {
-			await fetch(`/api/firefighter/${firefighter.id}`, {
-				method: 'PATCH',
-				body: JSON.stringify(updateParams)
-			});
-		} finally {
-			updateFirefighter(firefighter.id, updateParams);
-			setLoading(false);
-		}
+		updateFirefighter(firefighter.id, updateParams);
 	}
 
 	return {

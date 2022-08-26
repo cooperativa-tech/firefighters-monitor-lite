@@ -5,6 +5,9 @@
 	import PresencesList from '$lib/components/PresencesList.svelte';
 
 	export let data: PageServerData;
+
+	// Start the firefighters with data from the server then load in the data
+	// from the real time store
 	let firefighters = data.firefighters;
 	$: firefighters = $firefightersStore.firefighters || data.firefighters;
 </script>
