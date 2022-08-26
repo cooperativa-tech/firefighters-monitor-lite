@@ -6,7 +6,6 @@
 
 	export let data: PageServerData;
 	let firefighters = data.firefighters;
-
 	$: firefighters = $firefightersStore.firefighters || data.firefighters;
 </script>
 
