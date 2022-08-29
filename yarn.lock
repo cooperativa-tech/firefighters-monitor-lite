@@ -697,6 +697,11 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
+idle-tracker@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/idle-tracker/-/idle-tracker-0.1.2.tgz#8de140b742bc784b4a993abe5361c24dda18e7e5"
+  integrity sha512-URauJa+928JRSpzh+jwBXue+zGNcrONPzaruLvwWGXCmceXcU/lHpAQ3Kw6WRHHOxq6YG1WIZsWiDD9E85vlaQ==
+
 import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
