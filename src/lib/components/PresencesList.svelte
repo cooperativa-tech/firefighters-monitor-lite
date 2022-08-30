@@ -4,7 +4,7 @@
 		FIREFIGHTER_DUTY_TYPE,
 		FIREFIGHTER_TYPE
 	} from '$lib/firefightersQuery';
-	import { LABELS } from '$lib/constants';
+	import t from '$lib/i18n';
 
 	type CONFIG_TYPE =
 		| {
@@ -28,7 +28,7 @@
 
 <div>
 	<h3 class="value" style="border-color: {VALUE_TO_COLOR[config.value]};">
-		{LABELS[config.value]}
+		{t(config.kind, config.value)}
 	</h3>
 
 	<div class="list">

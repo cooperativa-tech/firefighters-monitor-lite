@@ -14,6 +14,8 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"@types/accept-language-parser": "^1.5.3",
+		"@types/lodash": "^4.14.184",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
 		"svelte": "^3.44.0",
@@ -27,8 +29,10 @@
 	"dependencies": {
 		"@datocms/cma-client-browser": "^1.1.1",
 		"@sveltejs/adapter-vercel": "^1.0.0-next.68",
+		"accept-language-parser": "^1.5.0",
 		"datocms-listen": "^0.1.9",
 		"idle-tracker": "^0.1.2",
+		"lodash": "^4.17.21",
 		"typed-graphqlify": "^3.1.6"
 	}
 }

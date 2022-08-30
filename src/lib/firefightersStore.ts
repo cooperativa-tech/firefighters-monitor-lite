@@ -1,5 +1,6 @@
 import { subscribeToQuery } from 'datocms-listen';
 import { writable } from 'svelte/store';
+import { PUBLIC_DATO_READ_TOKEN } from '$env/static/public';
 
 import {
 	firefightersQuery,
@@ -22,7 +23,7 @@ function createFirefighters() {
 	if (typeof window !== 'undefined') {
 		subscribeToQuery({
 			query: firefightersQuery.toString(),
-			token: import.meta.env.VITE_DATO_READ_TOKEN,
+			token: PUBLIC_DATO_READ_TOKEN,
 			includeDrafts: false,
 			onUpdate: ({ response }) => {
 				update((store) => ({ ...store, firefighters: response.data.firefighters }));

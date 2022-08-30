@@ -2,6 +2,7 @@
 	import type { FIREFIGHTER_TYPE } from '$lib/firefightersQuery';
 	import firefightersStore from '$lib/firefightersStore';
 	import { LABELS } from '$lib/constants';
+	import t from '$lib/i18n';
 
 	export let firefighter: FIREFIGHTER_TYPE;
 </script>
@@ -33,12 +34,12 @@
 			class:dutytype--elac={firefighter.dutyType === 'elac'}
 			class:dutytype--eip={firefighter.dutyType === 'eip'}
 		>
-			{LABELS[firefighter.dutyType]}
+			{t('dutyType', firefighter.dutyType)}
 		</div>
 	{/if}
 
 	<div class="block status">
-		{firefighter.availability === 'unavailable' ? '' : LABELS[firefighter.availability]}
+		{firefighter.availability === 'unavailable' ? '' : t('availability', firefighter.availability)}
 	</div>
 </button>
 

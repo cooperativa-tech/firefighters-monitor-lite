@@ -10,3 +10,7 @@ declare namespace App {
 }
 
 declare module '@datocms/cma-client-browser';
+
+export declare global {
+	var locale: string;
+}
