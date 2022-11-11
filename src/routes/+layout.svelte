@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import IdleTracker from 'idle-tracker';
 	import type { LayoutServerData } from './$types';
-	import { handleError } from '$lib/errors';
+	import { handleClientError } from '$lib/errors';
 
 	import '../reset.css';
 
@@ -25,7 +25,7 @@
 		idleTracker.start();
 
 		window.onerror = function (_message, _source, _lineno, _colno, error) {
-			handleError(error as Error);
+			handleClientError(error as Error);
 		};
 	});
 </script>

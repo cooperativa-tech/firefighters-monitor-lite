@@ -8,7 +8,7 @@ import {
 	type FIREFIGHTER_DUTY_TYPE,
 	type FIREFIGHTER_TYPE
 } from './firefightersQuery';
-import { handleError } from './errors';
+import { handleClientError } from './errors';
 
 interface StoreType {
 	firefighters?: FIREFIGHTER_TYPE[];
@@ -33,7 +33,7 @@ function createFirefighters() {
 				console.log(status);
 			},
 			onChannelError: (error) => {
-				handleError(error.message, error);
+				handleClientError(error.message, error);
 			}
 		});
 	}

@@ -1,7 +1,7 @@
 import type { RequestEvent } from '@sveltejs/kit';
 
-function sendToDiscord(content: string) {
-	return fetch('/api/discord', {
+function sendToDiscord(content: string, fetchFn?: typeof fetch) {
+	return (fetchFn || fetch)('/api/discord', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -12,10 +12,12 @@ function sendToDiscord(content: string) {
 	});
 }
 
-export async function handleError(error: Error | string, extra?: any) {
+export async function handleClientError(error: Error | string, extra?: any) {
+	if ((error as any).message.startsWith('Not found:')) return;
+
 	console.error(error);
 
-	//if (import.meta.env.MODE === 'development') return;
+	if (import.meta.env.MODE === 'development') return;
 
 	if (typeof error === 'string')
 		return sendToDiscord(`\`\`\`
@@ -33,15 +35,20 @@ ${extra ? JSON.stringify(extra, null, 2) : ''}
 	`);
 }
 
-export async function handleServerError(error: Error & { frame?: string }, event: RequestEvent) {
+export async function handleServerError(error: unknown, event: RequestEvent) {
+	if ((error as any).message.startsWith('Not found:')) return;
+
 	console.error(error);
 
 	if (import.meta.env.MODE === 'development') return;
 
-	await sendToDiscord(`\`\`\`
-${error.stack}
+	await sendToDiscord(
+		`\`\`\`
+${(error as any).stack}
 
 ${JSON.stringify(event, null, 2)}
 \`\`\`
-	`);
+	`,
+		event.fetch
+	);
 }

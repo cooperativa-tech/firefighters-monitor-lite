@@ -1,4 +1,4 @@
-import type { Handle, HandleError } from '@sveltejs/kit';
+import type { Handle, HandleServerError } from '@sveltejs/kit';
 import { ADMIN_LOGIN } from '$env/static/private';
 import { handleServerError } from '$lib/errors';
 
@@ -17,6 +17,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handleError: HandleError = async ({ error, event }) => {
-	await handleServerError(error, event);
+export const handleError: HandleServerError = ({ error, event }) => {
+	handleServerError(error, event);
 };

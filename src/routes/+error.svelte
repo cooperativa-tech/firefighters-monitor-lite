@@ -1,10 +1,10 @@
 <script>
 	import { page } from '$app/stores';
-	import { handleError } from '$lib/errors';
+	import { handleClientError } from '$lib/errors';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		handleError($page.error);
+		handleClientError($page.error?.message || "Unknown error", $page.error);
 	});
 </script>
 
