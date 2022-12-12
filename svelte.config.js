@@ -12,10 +12,7 @@ const config = {
 			edge: false,
 			external: [],
 			split: false
-		}),
-		prerender: {
-			enabled: false
-		}
+		})
 	}
 };
 
