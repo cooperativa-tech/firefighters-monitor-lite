@@ -44,22 +44,31 @@ function createFirefighters() {
 	) {
 		update((store) => ({ ...store, loading: true }));
 
-		await fetch(`/api/firefighter/${firefighterId}`, {
+		const response = await fetch(`/api/firefighter/${firefighterId}`, {
 			method: 'PATCH',
 			body: JSON.stringify(updateParams)
-		});
+		}).then((r) => r.json());
 
-		update((store) => ({
-			...store,
-			loading: false,
-			firefighters: store.firefighters?.map((firefighter) => {
-				if (firefighter.id === firefighterId) {
-					return { ...firefighter, ...updateParams } as FIREFIGHTER_TYPE;
-				}
+		if (response.message !== 'ok') {
+			console.error("Error, couldn't update!");
 
-				return firefighter;
-			})
-		}));
+			update((store) => ({
+				...store,
+				loading: false
+			}));
+		} else {
+			update((store) => ({
+				...store,
+				loading: false,
+				firefighters: store.firefighters?.map((firefighter) => {
+					if (firefighter.id === firefighterId) {
+						return { ...firefighter, ...updateParams } as FIREFIGHTER_TYPE;
+					}
+
+					return firefighter;
+				})
+			}));
+		}
 	}
 
 	async function updateAvailability(firefighter: FIREFIGHTER_TYPE) {
