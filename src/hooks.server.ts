@@ -1,6 +1,7 @@
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 import { ADMIN_LOGIN } from '$env/static/private';
 import { handleServerError } from '$lib/errors';
+import { parseLanguageHeader } from '$lib/i18n';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const auth = event.request.headers.get('Authorization');
@@ -14,7 +15,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		});
 	}
 
-	return resolve(event);
+	return resolve(event, {
+		transformPageChunk: ({ html }) => html.replace('%lang%', parseLanguageHeader(event.request).locale)
+	});
 };
 
 export const handleError: HandleServerError = ({ error, event }) => {
