@@ -13,12 +13,12 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^1.0.0-next.86",
-		"@sveltejs/kit": "1.0.0-next.584",
+		"@sveltejs/kit": "1.0.0",
 		"@types/accept-language-parser": "^1.5.3",
 		"@types/lodash": "^4.14.191",
 		"prettier": "^2.8.1",
 		"prettier-plugin-svelte": "^2.9.0",
-		"svelte": "^3.54.0",
+		"svelte": "^3.55.0",
 		"svelte-check": "^2.10.2",
 		"svelte-preprocess": "^5.0.0",
 		"tslib": "^2.4.1",
@@ -27,7 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-vercel": "^1.0.0-next.86",
+		"@sveltejs/adapter-vercel": "^1.0.0",
 		"accept-language-parser": "^1.5.0",
 		"datocms-listen": "^0.1.14",
 		"idle-tracker": "^0.1.2",
