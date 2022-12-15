@@ -14,5 +14,5 @@ export type FIREFIGHTER_AVAILABILITY_TYPE = typeof firefighterAvailabilities[num
 export type FIREFIGHTER_DUTY_TYPE = typeof firefigterDutyTypes[number];
 
 export const firefightersQuery = query('allFirefighters', {
-	[alias('firefighters', 'allFirefighters(orderBy: sortingIndex_ASC)')]: [firefighterFragment]
+	[alias('firefighters', 'allFirefighters(orderBy: sortingIndex_ASC, first: 100)')]: [firefighterFragment]
 });
