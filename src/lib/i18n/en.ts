@@ -2,11 +2,11 @@ export default {
 	availability: {
 		available: 'Available',
 		unavailable: 'Unavailable',
-    service: "Service"
+		service: 'Service'
 	},
 	dutyType: {
 		picket: 'Picket',
 		eip: 'EIP',
-		elac: 'ELAC'
+		ecin: 'ECIN'
 	}
 };

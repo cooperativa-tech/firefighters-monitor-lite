@@ -30,7 +30,7 @@
 		<div
 			class="dutytype"
 			class:dutytype--picket={firefighter.dutyType === 'picket'}
-			class:dutytype--elac={firefighter.dutyType === 'elac'}
+			class:dutytype--ecin={firefighter.dutyType === 'ecin'}
 			class:dutytype--eip={firefighter.dutyType === 'eip'}
 		>
 			{t('dutyType', firefighter.dutyType)}
@@ -120,7 +120,7 @@
 		line-height: 20px;
 	}
 
-	.dutytype--elac {
+	.dutytype--ecin {
 		background-color: var(--color-roasted-yellow);
 	}
 

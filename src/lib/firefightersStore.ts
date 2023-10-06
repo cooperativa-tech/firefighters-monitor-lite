@@ -86,8 +86,8 @@ function createFirefighters() {
 	async function updateDutyType(firefighter: FIREFIGHTER_TYPE) {
 		let nextDutyType: FIREFIGHTER_DUTY_TYPE | null = 'picket';
 
-		if (firefighter.dutyType === 'picket') nextDutyType = 'elac';
-		if (firefighter.dutyType === 'elac') nextDutyType = 'eip';
+		if (firefighter.dutyType === 'picket') nextDutyType = 'ecin';
+		if (firefighter.dutyType === 'ecin') nextDutyType = 'eip';
 		if (firefighter.dutyType === 'eip') nextDutyType = null;
 
 		const updateParams = { dutyType: nextDutyType as FIREFIGHTER_DUTY_TYPE };

@@ -18,7 +18,7 @@
 		available: 'var(--color-leaf-green)',
 		service: 'var(--color-fire-red)',
 		picket: 'solid var(--color-yellow)',
-		elac: 'var(--color-roasted-yellow)',
+		ecin: 'var(--color-roasted-yellow)',
 		eip: 'var(--color-purple)',
 		unavailable: ''
 	};

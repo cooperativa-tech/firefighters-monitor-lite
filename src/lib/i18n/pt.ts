@@ -6,7 +6,7 @@ export default {
 	},
 	dutyType: {
 		picket: 'Piquete',
-		elac: 'ELAC',
-    eip: 'EIP',
+		ecin: 'ECIN',
+		eip: 'EIP'
 	}
 };
