@@ -26,7 +26,7 @@
 
 		<PresencesList config={{ kind: 'dutyType', firefighters, value: 'picket' }} />
 
-		<PresencesList config={{ kind: 'dutyType', firefighters, value: 'elac' }} />
+		<PresencesList config={{ kind: 'dutyType', firefighters, value: 'ecin' }} />
 
 		<PresencesList config={{ kind: 'dutyType', firefighters, value: 'eip' }} />
 	</div>
