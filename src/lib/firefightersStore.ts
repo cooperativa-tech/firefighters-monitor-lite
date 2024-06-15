@@ -74,7 +74,8 @@ function createFirefighters() {
 	async function updateAvailability(firefighter: FIREFIGHTER_TYPE) {
 		let nextAvailability: FIREFIGHTER_AVAILABILITY_TYPE = 'unavailable';
 
-		if (firefighter.availability === 'unavailable') nextAvailability = 'available';
+		if (firefighter.availability === 'unavailable') nextAvailability = 'onCall';
+		if (firefighter.availability === 'onCall') nextAvailability = 'available';
 		if (firefighter.availability === 'available') nextAvailability = 'service';
 		if (firefighter.availability === 'service') nextAvailability = 'unavailable';
 

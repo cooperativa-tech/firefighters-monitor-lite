@@ -17,7 +17,8 @@
 	const VALUE_TO_COLOR: Record<FIREFIGHTER_AVAILABILITY_TYPE | FIREFIGHTER_DUTY_TYPE, string> = {
 		available: 'var(--color-leaf-green)',
 		service: 'var(--color-fire-red)',
-		picket: 'solid var(--color-yellow)',
+		onCall: 'var(--color-blue)',
+		picket: 'var(--color-yellow)',
 		ecin: 'var(--color-roasted-yellow)',
 		eip: 'var(--color-purple)',
 		unavailable: ''

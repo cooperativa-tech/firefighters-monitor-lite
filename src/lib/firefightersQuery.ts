@@ -1,6 +1,6 @@
 import { alias, query, types } from 'typed-graphqlify';
 
-export const firefighterAvailabilities = ['available', 'unavailable', 'service'] as const;
+export const firefighterAvailabilities = ['available', 'unavailable', 'service', 'onCall'] as const;
 export const firefigterDutyTypes = ['picket', 'ecin', 'eip'] as const;
 export const firefighterFragment = {
 	id: types.string,

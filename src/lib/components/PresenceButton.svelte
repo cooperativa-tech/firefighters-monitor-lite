@@ -10,6 +10,7 @@
 	class="button"
 	class:button-available={firefighter.availability === 'available'}
 	class:button-service={firefighter.availability === 'service'}
+	class:button-on-call={firefighter.availability === 'onCall'}
 	on:click={(event) => {
 		if ($firefightersStore.loading) return;
 
@@ -101,6 +102,11 @@
 	.button-service {
 		background-color: var(--color-fire-red);
 		border-color: var(--color-fire-red);
+	}
+
+	.button-on-call {
+		background-color: var(--color-light-blue);
+		border-color: var(--color-light-blue);
 	}
 
 	.dutytype {

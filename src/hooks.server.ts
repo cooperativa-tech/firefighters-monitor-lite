@@ -16,7 +16,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	return resolve(event, {
-		transformPageChunk: ({ html }) => html.replace('%lang%', parseLanguageHeader(event.request).locale)
+		transformPageChunk: ({ html }) =>
+			html.replace('%lang%', parseLanguageHeader(event.request).locale)
 	});
 };
 

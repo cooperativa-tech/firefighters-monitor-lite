@@ -2,7 +2,8 @@ export default {
 	availability: {
 		available: 'Disponível',
 		unavailable: 'Indisponível',
-		service: 'Em Serviço'
+		service: 'Em Serviço',
+		onCall: 'À Chamada'
 	},
 	dutyType: {
 		picket: 'Piquete',

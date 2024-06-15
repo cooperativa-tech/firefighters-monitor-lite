@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		handleClientError($page.error?.message || "Unknown error", $page.error);
+		handleClientError($page.error?.message || 'Unknown error', $page.error);
 	});
 </script>
 
