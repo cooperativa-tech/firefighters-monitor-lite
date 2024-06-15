@@ -105,8 +105,8 @@
 	}
 
 	.button-on-call {
-		background-color: var(--color-light-blue);
-		border-color: var(--color-light-blue);
+		background-color: var(--color-blue);
+		border-color: var(--color-blue);
 	}
 
 	.dutytype {
