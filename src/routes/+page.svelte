@@ -39,7 +39,6 @@
 
 <style>
 	main {
-		margin: 0;
 		padding: 0.5rem;
 		display: flex;
 		flex-direction: row;
