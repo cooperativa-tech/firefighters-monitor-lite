@@ -3,14 +3,14 @@ import { alias, query, types } from 'typed-graphqlify';
 export const firefighterAvailabilities = ['available', 'unavailable', 'service', 'onCall'] as const;
 export const firefighterDutyTypes = ['picket', 'ecin', 'eip'] as const;
 export const firefighterCategory = [
-	'third',
-	'second',
-	'first',
-	'subChief',
-	'chief',
-	'adjunct',
+	'commander',
 	'secondCommander',
-	'commander'
+	'adjunct',
+	'chief',
+	'subChief',
+	'first',
+	'second',
+	'third'
 ] as const;
 export const firefighterFragment = {
 	id: types.string,

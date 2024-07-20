@@ -1,8 +1,9 @@
 <script lang="ts">
-	import type {
-		FIREFIGHTER_AVAILABILITY_TYPE,
-		FIREFIGHTER_DUTY_TYPE,
-		FIREFIGHTER_TYPE
+	import {
+		firefighterCategory,
+		type FIREFIGHTER_AVAILABILITY_TYPE,
+		type FIREFIGHTER_DUTY_TYPE,
+		type FIREFIGHTER_TYPE
 	} from '$lib/firefightersQuery';
 	import t from '$lib/i18n';
 
@@ -25,6 +26,14 @@
 	};
 
 	export let config: CONFIG_TYPE;
+	let filteredFirefighters: FIREFIGHTER_TYPE[] = config.firefighters.filter(
+		(firefighter) => firefighter[config.kind] === config.value
+	);
+	export let availableByCategory = firefighterCategory
+		.map((category) => {
+			return filteredFirefighters.filter((firefighter) => firefighter.category === category);
+		})
+		.filter((firefighterCategory) => firefighterCategory.length > 0);
 </script>
 
 <div>
@@ -32,9 +41,16 @@
 		{t(config.kind, config.value)}
 	</h3>
 
-	<div class="list">
-		{#each config.firefighters.filter((firefighter) => firefighter[config.kind] === config.value) as firefighter}
-			<span>{firefighter.name}</span>
+	<div class="lit-container">
+		{#each availableByCategory as firefighterCategory, firefighterCategoryIndex}
+			<div class="list">
+				{#each firefighterCategory as firefighter, index2}
+					<span>{firefighter.name}</span>
+				{/each}
+				{#if firefighterCategoryIndex < availableByCategory.length - 1}
+					<span style="color: {VALUE_TO_COLOR[config.value]};">|</span>
+				{/if}
+			</div>
 		{/each}
 	</div>
 </div>
@@ -43,6 +59,13 @@
 	.value {
 		border-bottom: 4px solid;
 		margin: 0 0 1rem;
+	}
+
+	.lit-container {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
 	.list {
