@@ -26,10 +26,11 @@
 	};
 
 	export let config: CONFIG_TYPE;
-	let filteredFirefighters: FIREFIGHTER_TYPE[] = config.firefighters.filter(
+
+	$: filteredFirefighters = config.firefighters.filter(
 		(firefighter) => firefighter[config.kind] === config.value
 	);
-	export let availableByCategory = firefighterCategory
+	$: availableByCategory = firefighterCategory
 		.map((category) => {
 			return filteredFirefighters.filter((firefighter) => firefighter.category === category);
 		})
