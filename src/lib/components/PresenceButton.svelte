@@ -2,6 +2,14 @@
 	import type { FIREFIGHTER_TYPE } from '$lib/firefightersQuery';
 	import firefightersStore from '$lib/firefightersStore';
 	import t from '$lib/i18n';
+	import AdjIcon from './AdjIcon.svelte';
+	import ChiefIcon from './ChiefIcon.svelte';
+	import CmdtIcon from './CmdtIcon.svelte';
+	import FirstIcon from './FirstIcon.svelte';
+	import SecondCmdtIcon from './SecondCmdtIcon.svelte';
+	import SecondIcon from './SecondIcon.svelte';
+	import SubChiefIcon from './SubChiefIcon.svelte';
+	import ThirdIcon from './ThirdIcon.svelte';
 
 	export let firefighter: FIREFIGHTER_TYPE;
 </script>
@@ -25,7 +33,26 @@
 	}}
 	disabled={$firefightersStore.loading}
 >
-	<span class="block name">{firefighter.name}</span>
+	<div class="row name">
+		<span class="name-tag">{firefighter.name}</span>
+		{#if firefighter.category === 'first'}
+			<FirstIcon />
+		{:else if firefighter.category === 'second'}
+			<SecondIcon />
+		{:else if firefighter.category === 'subChief'}
+			<SubChiefIcon />
+		{:else if firefighter.category === 'chief'}
+			<ChiefIcon />
+		{:else if firefighter.category === 'adjunct'}
+			<AdjIcon />
+		{:else if firefighter.category === 'secondCommander'}
+			<SecondCmdtIcon />
+		{:else if firefighter.category === 'commander'}
+			<CmdtIcon />
+		{:else}
+			<ThirdIcon />
+		{/if}
+	</div>
 
 	{#if firefighter.dutyType}
 		<div
@@ -61,7 +88,7 @@
 
 		font-family: var(--font-family-sans-serif);
 
-		font-size: 28px;
+		font-size: 24px;
 		font-weight: var(--font-weight-bold);
 		line-height: 46px;
 		text-decoration: none;
@@ -80,6 +107,18 @@
 		cursor: progress;
 	}
 
+	.row {
+		display: flex;
+		position: relative;
+		flex-direction: row;
+		align-items: center;
+
+		width: 100%;
+		height: 50%;
+
+		padding-bottom: 8px;
+	}
+
 	.block {
 		display: flex;
 		flex-direction: column;
@@ -90,8 +129,9 @@
 		height: 50%;
 	}
 
-	.name {
-		padding-bottom: 8px;
+	.name-tag {
+		flex: 1 1 auto;
+		margin-left: 8px;
 	}
 
 	.button-available {

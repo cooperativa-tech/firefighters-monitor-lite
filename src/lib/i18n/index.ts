@@ -13,9 +13,8 @@ export default function t(...key: string[]) {
 	console.warn(`Missing i18n label: ${parsedKey} for locale ${globalThis.locale}`);
 
 	return key;
-
 }
-export function parseLanguageHeader(request: Request){
+export function parseLanguageHeader(request: Request) {
 	const locales = acceptLanguageParser.parse(request.headers.get('accept-language') || 'en-us');
 
 	if (!locales[0]) return { locale: 'en-us' };
